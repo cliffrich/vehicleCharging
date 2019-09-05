@@ -1,0 +1,24 @@
+version: "3.6"
+
+services:
+  vehicle-charging:
+    image: builders/vehicle-charging:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - "/tmp/inbox:/tmp/inbox"
+      - "/tmp/outbox:/tmp/outbox"
+    networks:
+      - bh_network
+    container_name: vehicle-charging
+
+  state-store:
+    image: percona:5.6.37
+    ports:
+      - 3306:3306
+    network_mode: host
+    restart: always
+    container_name: state-store
+
+networks:
+  bh_network:

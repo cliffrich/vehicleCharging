@@ -1,0 +1,9 @@
+FROM alpine:latest
+#FROM openjdk:8-jdk-alpine
+MAINTAINER Author cliff <cliffra@gmail.com>
+RUN adduser -D vehicle-charging
+USER vehicle-charging
+RUN mkdir /tmp/inbox && mkdir /tmp/outbox && mkdir /tmp/bhpayload && mkdir /tmp/log
+ARG JAR_FILE
+COPY vehicleCharging-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-Xms2048M", "-Xmx2560M", "-jar", "/app.jar"]

@@ -1,0 +1,10 @@
+version: "3.6"
+
+services:
+  state-store:
+    image: percona:5.6.37
+    ports:
+      - 3306:3306
+    network_mode: host
+    restart: always
+    container_name: state-store

@@ -1,0 +1,24 @@
+[
+  {
+    "id":"tf-1",
+    "firstName":"test firstName 1",
+    "lastName":"test lastName 1",
+    "email":"testfleets1@sky.com",
+    "password":"test1password",
+    "account":
+    {
+      "id":"test_fleets"
+    }
+  },
+  {
+    "id":"tf-2",
+    "firstName":"test firstName 2",
+    "lastName":"test lastName 2",
+    "email":"testfleets2@sky.com",
+    "password":"test2password",
+    "account":
+    {
+      "id":"test_fleets"
+    }
+  }
+]

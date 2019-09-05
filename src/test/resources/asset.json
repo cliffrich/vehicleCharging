@@ -1,0 +1,20 @@
+[
+  {
+    "name":"Insta volt",
+    "chargeType":"RAPID_AC",
+    "pricePerHour":"2.00",
+    "location":
+    {
+      "id":"1"
+    }
+  },
+  {
+    "name":"Insta volt",
+    "chargeType":"RAPID_AC",
+    "pricePerHour":"2.00",
+    "location":
+    {
+      "id":"2"
+    }
+  }
+]

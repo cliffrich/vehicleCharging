@@ -1,0 +1,142 @@
+databaseChangeLog:
+  - preConditions:
+      - runningAs:
+          username: root
+  - changeSet:
+      id: sse-1
+      author: Richard Cliff
+      changes:
+        - createTable:
+            tableName: location
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: postcode
+                  type: char(7)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: asset
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: chargerType
+                  type: varchar(50)
+              - column:
+                  name: location_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_asset_location_id
+                    references: location(id)
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: id
+                  type: varchar(50)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: pricePerSecond
+                  type: decimal
+        - createTable:
+            tableName: vehicle_user
+            columns:
+              - column:
+                  name: id
+                  type: varchar(50)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: account_id
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_account_id
+                    references: account(id)
+              - column:
+                  name: vehicleMake
+                  type: varchar(255)
+              - column:
+                  name: vehicleModel
+                  type: varchar(255)
+              - column:
+                  name: vehicleType
+                  type: varchar(255)
+              - column:
+                  name: vehicleDepot
+                  type: varchar(255)
+              - column:
+                  name: paymentMethod
+                  type: varchar(255)
+              - column:
+                  name: paymentLimit
+                  type: decimal
+#        - createTable:
+#            tableName: charging_session
+#            columns:
+#              - column:
+#                  name: id
+#                  type: bigint
+#                  autoIncrement: true
+#                  constraints:
+#                    primaryKey: true
+#                    nullable: false
+#              - column:
+#                  name: startTime
+#                  type: timestamp
+#              - column:
+#                  name: endTime
+#                  type: timestamp
+#              - column:
+#                  name: user_id
+#                  type: varchar(50)
+#                  constraints:
+#                    nullable: false
+#                    foreignKeyName: fk_session_user_id
+#                    references: vehicle_user(id)
+#              - column:
+#                  name: location_id
+#                  type: varchar(50)
+#                  constraints:
+#                    nullable: false
+#                    foreignKeyName: fk_session_location_id
+#                    references: location(id)
+#              - column:
+#                  name: cost
+#                  type: decimal
